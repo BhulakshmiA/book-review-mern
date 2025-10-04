@@ -1,39 +1,47 @@
 
 # 📚 MERN Stack Book Review Platform
 
-A **full-stack application** built using the **MERN** (MongoDB, Express, React, Node.js) stack, demonstrating secure user authentication, comprehensive **CRUD** (Create, Read, Update, Delete) operations, and professional data presentation.
+A **full-stack application** built using the **MERN** (MongoDB, Express, React, Node.js) stack, demonstrating secure user authentication, comprehensive **CRUD** operations, and professional data presentation.
 
-The platform features:
+## ✅ Key Project Features
 
-  * **Secure Authentication:** **JWT** integration with **bcrypt** protection for all user sessions.
-  * **Book Management:** Full CRUD capabilities with **creator-only access** for editing and deletion.
-  * **Review System:** Users can add, edit, and delete reviews, with dynamic calculation of the **Average Rating**.
-  * **Optimized Display:** Implementation of **Pagination** (5 books per page) and a modern, styled interface using **Tailwind CSS**.
+| Feature | Status | Details |
+| :--- | :--- | :--- |
+| **Authentication** | Complete | **JWT** sessions, **bcrypt** hashing, and protected routes. |
+| **Book CRUD** | Complete | Full creation, update, and deletion logic. **Creator-only** permissions enforced. |
+| **Review System** | Complete | **Average Rating** calculation and owner-specific review management. |
+| **Pagination** | Complete | Optimized display (5 books per page) with functional controls. |
+| **UI/UX** | Complete | Styled with **Tailwind CSS**, featuring a clean, responsive interface. |
 
------
+---
 
-## 🚀 Final Launch Steps
+## 🚀 Setup & Launch Instructions
 
-These are the two steps required to run your complete application locally for verification:
+### Prerequisites
 
-### 1\. Launch Backend (API)
+* Node.js (v18+)
+* MongoDB Atlas Account
 
-Open one terminal and run:
+### I. Backend Setup (API)
 
-```bash
-cd backend
-npm run server
-```
+1.  **Install:** `cd backend && npm install`
+2.  **Configure:** Create a **`.env`** file with your `MONGO_URI` and `JWT_SECRET`.
+3.  **Launch:** `npm run server` (Runs on `http://localhost:5000`)
 
-*Verification: The API starts on `http://localhost:5000` and displays the "MongoDB Connected" message.*
+### II. Frontend Setup (UI)
 
-### 2\. Launch Frontend (UI)
+1.  **Install:** `cd frontend && npm install`
+2.  **Launch:** `npm run dev` (Runs on `http://localhost:5173`)
 
-Open a second terminal and run:
+---
 
-```bash
-cd frontend
-npm run dev
-```
+## 🌐 API Documentation
 
-*Verification: The UI opens in your browser on `http://localhost:5173` (or similar port) and displays the styled application.*
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| **POST** | `/api/users/login` | Authenticates user and returns **JWT token**. | Public |
+| **GET** | `/api/books?pageNumber=X` | Retrieves paginated list of books (5 per page). | Public |
+| **POST** | `/api/books` | Creates a new book record. | **Private (JWT Required)** |
+| **POST** | `/api/reviews/:bookId` | Adds a review to a specified book. | **Private (JWT Required)** |
+
+***
